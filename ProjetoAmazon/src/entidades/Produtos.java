@@ -1,104 +1,120 @@
 package entidades;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Produtos {
      //atributos
-     public String produto1;
-     public String produto2;
-     public String produto3;
-     public String descricaoproduto1;
-     public String descricaoproduto2;
-     public String descricaoproduto3;
-     public String preco1;
-     public String preco2;
-     public String preco3;
+     public String produto;
+     public String descricaoproduto;
+     public String preco;
+     public String quantidade;
+     List<List<String>> matriz = new ArrayList<>();
 
      //construtor
-     public Produtos(String produto1, String produto2, String produto3, String descricaoproduto1,
-               String descricaoproduto2, String descricaoproduto3, String preco1, String preco2, String preco3) {
-          this.produto1 = produto1;
-          this.produto2 = produto2;
-          this.produto3 = produto3;
-          this.descricaoproduto1 = descricaoproduto1;
-          this.descricaoproduto2 = descricaoproduto2;
-          this.descricaoproduto3 = descricaoproduto3;
-          this.preco1 = preco1;
-          this.preco2 = preco2;
-          this.preco3 = preco3;
+     public Produtos(String produto, String descricaoproduto, String preco, String quantidade) {
+          this.produto = produto;
+          this.descricaoproduto = descricaoproduto;
+          this.preco = preco;
+          this.quantidade = quantidade;
      }
+
 
      //metodos get e set
-
-     public String getProduto1() {
-          return produto1;
+     public String getProduto() {
+          return produto;
      }
 
-     public void setProduto1(String produto1) {
-          this.produto1 = produto1;
+
+     public void setProduto(String produto) {
+          this.produto = produto;
      }
 
-     public String getProduto2() {
-          return produto2;
+
+     public String getDescricaoproduto() {
+          return descricaoproduto;
      }
 
-     public void setProduto2(String produto2) {
-          this.produto2 = produto2;
+
+     public void setDescricaoproduto(String descricaoproduto) {
+          this.descricaoproduto = descricaoproduto;
      }
 
-     public String getProduto3() {
-          return produto3;
+
+     public String getPreco() {
+          return preco;
      }
 
-     public void setProduto3(String produto3) {
-          this.produto3 = produto3;
+
+     public void setPreco(String preco) {
+          this.preco = preco;
      }
 
-     public String getDescricaoproduto1() {
-          return descricaoproduto1;
+
+     public String getQuantidade() {
+          return quantidade;
      }
 
-     public void setDescricaoproduto1(String descricaoproduto1) {
-          this.descricaoproduto1 = descricaoproduto1;
+
+     public void setQuantidade(String quantidade) {
+          this.quantidade = quantidade;
      }
 
-     public String getDescricaoproduto2() {
-          return descricaoproduto2;
+     //métodos
+     //Mostrar produtos
+     public void mostrar() {
+          for(int i = 0; i < matriz.size(); i++) {
+               List<String> row = matriz.get(i);
+               for(int j = 0; j < row.size(); j++) {
+                    System.out.print(row.get(j) + "\t");
+               }
+               System.out.println();
+          }
      }
 
-     public void setDescricaoproduto2(String descricaoproduto2) {
-          this.descricaoproduto2 = descricaoproduto2;
+
+     //adicionar produtos
+     public void adicionar(int contador) { 
+          if(matriz.size() <= 4) {
+               for (int i = 0; i < 4; i++) {
+                    if (matriz.size() <= i) {
+                         matriz.add(new ArrayList<>());  // Cria uma nova linha se ela não existir
+                    }
+               }    
+          }
+          for (int i = 0; i < 4; i++) {
+               List<String> linha = matriz.get(i);  // Obter a linha atual
+       
+               // Garante que a linha tem espaço suficiente para a coluna desejada
+               while (linha.size() <= contador) {
+                   linha.add("");  // Preenche com strings vazias se a linha for curta
+               }
+       
+               if (i == 0) {
+                    linha.set(contador, produto);   // Adiciona o produto na coluna especificada da linha 0
+               } else if (i == 1) {
+                    linha.set(contador, descricaoproduto);  // Adiciona a descrição na coluna especificada da linha 1
+               } else if (i == 2) {
+                    linha.set(contador, preco);  // Adiciona o preço na coluna especificada da linha 2
+               } else if (i == 3) {
+                    linha.set(contador, quantidade);  // Adiciona a quantidade na coluna especificada da linha 3
+               }
+          }
+          System.out.println("Produto adicionado!\n");
      }
 
-     public String getDescricaoproduto3() {
-          return descricaoproduto3;
+     //Excluir Conta
+     public void excluir(String produto) {
+          for (int i = 0; i < 4; i++) {
+               List<String> row = matriz.get(i);
+               for (int j = 0; j < row.size(); j++) {
+                   if (row.get(j).equals(produto)) {
+                       row.remove(j);
+                       j--;
+                   }
+               }
+          }
+          System.out.println("Produto excluído!");
      }
 
-     public void setDescricaoproduto3(String descricaoproduto3) {
-          this.descricaoproduto3 = descricaoproduto3;
-     }
-
-     public String getPreco1() {
-          return preco1;
-     }
-
-     public void setPreco1(String preco1) {
-          this.preco1 = preco1;
-     }
-
-     public String getPreco2() {
-          return preco2;
-     }
-
-     public void setPreco2(String preco2) {
-          this.preco2 = preco2;
-     }
-
-     public String getPreco3() {
-          return preco3;
-     }
-
-     public void setPreco3(String preco3) {
-          this.preco3 = preco3;
-     }
-
-     
 }

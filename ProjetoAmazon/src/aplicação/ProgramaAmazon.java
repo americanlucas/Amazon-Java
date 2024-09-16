@@ -9,7 +9,7 @@ public class ProgramaAmazon {
      public static void main(String[] args) {
     	 
           Conta MinhaConta = new Conta(null, null, null);
-          Produtos MeusProdutos = new Produtos(null, null, null, null, null, null, null, null, null);
+          Produtos MeusProdutos = new Produtos(null, null, null, null);
           Scanner sc = new Scanner (System.in);
           int indexMenu = 0;
 		  int contadorConta = 0;
@@ -51,11 +51,16 @@ public class ProgramaAmazon {
 	                    break;
 	               
 	               case 2:
+				   		if (contadorConta == 0) {
+							System.out.println("Contas insuficientes.");
+							break;
+						}
 	                    System.out.println("Digite o nome de usuário para excluir a conta: ");
 	                    String usuario = sc.nextLine();
 	                    System.out.println();
 	                    MinhaConta.excluir(usuario);
 						contadorConta--;
+						
 	                    break;
 
 	               case 3:
@@ -72,47 +77,48 @@ public class ProgramaAmazon {
 	                    break;
 
 	               case 4:
-	                    MinhaConta.mostrar();
+						if (contadorConta == 0) {
+							System.out.println("Contas insuficientes. \n");
+							break;
+						}
+						MinhaConta.mostrar();
 	                    break;
 
 	               case 5:
-	                    System.out.println("Produtos: ");
-	                    System.out.println(MeusProdutos.getProduto1());
-	                    System.out.println(MeusProdutos.getDescricaoproduto1());
-	                    System.out.println(MeusProdutos.getPreco1());
-	                    System.out.println();
-	                    System.out.println(MeusProdutos.getProduto2());
-	                    System.out.println(MeusProdutos.getDescricaoproduto2());
-	                    System.out.println(MeusProdutos.getPreco2());
-	                    System.out.println();
-	                    System.out.println(MeusProdutos.getProduto3());
-	                    System.out.println(MeusProdutos.getDescricaoproduto3());
-	                    System.out.println(MeusProdutos.getPreco3());
-	                    System.out.println();
+						if (contadorProduto == 0) {
+							System.out.println("Produtos insuficientes. \n");
+							break;
+						}
+						MeusProdutos.mostrar();
 	                    break;
 	               
 	               case 6: 
-	                    System.out.println("Escolha um produto para adicionar ao carrinho(1 - Geladeira, 2 - Monitor, 3 - Colchão): ");
-	                    int indexCarrinho = sc.nextInt();
-	                    if (indexCarrinho == 1) {
-	                         System.out.println(MeusProdutos.getProduto1() + " foi adicionado ao carrinho.");
-	                    } else if (indexCarrinho == 2) {
-	                         System.out.println(MeusProdutos.getProduto2() + " foi adicionado ao carrinho.");
-	                    } else {
-	                         System.out.println(MeusProdutos.getProduto3() + " foi adicionado ao carrinho.");
-	                    }
+						System.out.println("Nome do produto: ");
+	                    MeusProdutos.setProduto(sc.nextLine());
+	                    //System.out.println();
+	                    System.out.println("Descrição: ");
+	                    MeusProdutos.setDescricaoproduto(sc.nextLine());
+	                    //System.out.println();
+	                    System.out.println("Preço: "); 
+	                    MeusProdutos.setPreco(sc.nextLine());
+						//System.out.println();
+						System.out.println("Quantidade: "); 
+	                    MeusProdutos.setQuantidade(sc.nextLine());
+						MeusProdutos.adicionar(contadorProduto);
+						contadorProduto++;
 	                    break;
 
 	               case 7:
-	                    System.out.println("Escolha um produto para remover do carrinho(1 - Geladeira, 2 - Monitor, 3 - Colchão): ");
-	                    indexCarrinho = sc.nextInt();
-	                    if (indexCarrinho == 1) {
-	                         System.out.println(MeusProdutos.getProduto1() + " foi removido do carrinho.");
-	                    } else if (indexCarrinho == 2) {
-	                         System.out.println(MeusProdutos.getProduto2() + " foi removido do carrinho.");
-	                    } else {
-	                         System.out.println(MeusProdutos.getProduto3() + " foi removido do carrinho.");
-	                    }
+						if (contadorProduto == 0) {
+							System.out.println("Produtos insuficientes.");
+							break;
+						}
+	                    System.out.println("Digite o nome do produto para excluir: ");
+	                    String produto = sc.nextLine();
+	                    System.out.println();
+	                    MeusProdutos.excluir(produto);
+						contadorProduto--;
+						
 	                    break;
 	               
 	               case 8: 

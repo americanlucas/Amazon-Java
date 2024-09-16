@@ -46,13 +46,13 @@ public class Conta {
      //métodos
      //Criar conta
      public void adicionar(int contador) { 
-    	 if(matriz.size() <= 3) {
-    		 for (int i = 0; i < 3; i++) {
-    	        if (matriz.size() <= i) {
-    	            matriz.add(new ArrayList<>());  // Cria uma nova linha se ela não existir
-    	        }
-    	    }
-    	 }
+          if(matriz.size() <= 3) {
+               for (int i = 0; i < 3; i++) {
+                    if (matriz.size() <= i) {
+                         matriz.add(new ArrayList<>());  // Cria uma nova linha se ela não existir
+                    }
+               }    
+          }
           for (int i = 0; i < 3; i++) {
                List<String> linha = matriz.get(i);  // Obter a linha atual
        
@@ -68,8 +68,8 @@ public class Conta {
                } else if (i == 2) {
                    linha.set(contador, email);  // Adiciona o email na coluna especificada da linha 2
                }
-           }
-           System.out.println("Conta adicionada!\n");
+          }
+          System.out.println("Conta adicionada!\n");
      }
 
      //Excluir Conta
@@ -82,8 +82,8 @@ public class Conta {
                        j--;
                    }
                }
-           }
-           System.out.println("Usuário excluído!");
+          }
+          System.out.println("Usuário excluído!");
      }
 
      //Alterar email e senha
