@@ -1,9 +1,14 @@
+package a;
+import java.util.ArrayList;
+import java.util.List;
 public class Conta {
      
      //atributos
-     public String email;
-     public String senha;
-     public String username;
+     private String email;
+     private String senha;
+     private String username;
+     List<List<Integer>> matriz = new ArrayList<>();
+     
 
      //construtor
      public Conta(String email, String senha, String username) {
@@ -36,5 +41,17 @@ public class Conta {
      public void setUsername(String username) {
           this.username = username;
      }
-
+     
+     //métodos
+     //Criar conta
+     public void adicionar(String nome,String email,String senha, int contador) { 
+    	 if(matriz.size() <= 3) {
+    		 for (int i = 0; i < 3; i++) {
+    	        if (matriz.size() <= i) {
+    	            matriz.add(new ArrayList<>());  // Cria uma nova linha se ela não existir
+    	        }
+    	    }
+    	 }
+    	 
+     }
 }

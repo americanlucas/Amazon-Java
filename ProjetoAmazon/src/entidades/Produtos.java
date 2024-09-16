@@ -1,3 +1,6 @@
+package a;
+
+
 public class Produtos {
      //atributos
      public String produto1;
