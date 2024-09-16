@@ -1,8 +1,11 @@
-package a;
+package aplicação;
 
 import java.util.Scanner;
 
-public class main {
+import entidades.Conta;
+import entidades.Produtos;
+
+public class ProgramaAmazon {
      public static void main(String[] args) {
     	 
           Conta MinhaConta = new Conta(null, null, null);

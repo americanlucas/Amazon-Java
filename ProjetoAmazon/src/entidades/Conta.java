@@ -1,6 +1,8 @@
-package a;
+package entidades;
+
 import java.util.ArrayList;
 import java.util.List;
+
 public class Conta {
      
      //atributos
@@ -54,4 +56,5 @@ public class Conta {
     	 }
     	 
      }
+
 }

@@ -1,5 +1,4 @@
-package a;
-
+package entidades;
 
 public class Produtos {
      //atributos
