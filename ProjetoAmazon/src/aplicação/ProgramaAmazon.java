@@ -12,23 +12,12 @@ public class ProgramaAmazon {
           Produtos MeusProdutos = new Produtos(null, null, null, null, null, null, null, null, null);
           Scanner sc = new Scanner (System.in);
           int indexMenu = 0;
+		  int contadorConta = 0;
+		  int contadorProduto = 0;
 
           while(indexMenu != 8) {
-			//definindo produtos
-		      MeusProdutos.setProduto1("Geladeira Eletrolux");
-		      MeusProdutos.setDescricaoproduto1("Perfeito para guardar comida.");
-		      MeusProdutos.setPreco1("R$ 2499,99");
-		
-		      MeusProdutos.setProduto2("Monitor Gamer 144hz");
-		      MeusProdutos.setDescricaoproduto2("Veja os inimigos na tela antes que eles vejam você");
-		      MeusProdutos.setPreco2("R$ 799,99");
-		
-		      MeusProdutos.setProduto3("Colchão Cama de Casal");
-		      MeusProdutos.setDescricaoproduto3("Perfeito para dormir, principalmente com namorado(a).");
-		      MeusProdutos.setPreco3("R$ 689,99");
-		
-		      //usuário padrão
-		      MinhaConta.setUsername("João da Silva");
+
+			//Menu
 		      System.out.println("Menu");
 	          System.out.println();
 	          System.out.println("1. Criar conta");
@@ -42,59 +31,48 @@ public class ProgramaAmazon {
 	          System.out.println();
 	          System.out.println("Digite um número para o menu: ");
 	          indexMenu = sc.nextInt();
+			  if (sc.hasNextLine()) {
+				sc.nextLine();  // Consumir o '\n' que ficou no buffer
+			  }
 	          
 	          //Casos
 	          switch (indexMenu) {
 	               case 1:
-	                    System.out.println("Nome de usuário, Email e Senha: ");
+	                    System.out.println("Nome de usuário: ");
 	                    MinhaConta.setUsername(sc.nextLine());
 	                    //System.out.println();
-	                    //System.out.println("Email: ");
+	                    System.out.println("Email: ");
 	                    MinhaConta.setEmail(sc.nextLine());
 	                    //System.out.println();
-	                    //System.out.println("Senha: "); 
+	                    System.out.println("Senha: "); 
 	                    MinhaConta.setSenha(sc.nextLine());
-	                    //System.out.println();
-	                    //System.out.println("Conta cadastrada com sucesso! ");
+						MinhaConta.adicionar(contadorConta);
+						contadorConta++;
 	                    break;
 	               
 	               case 2:
 	                    System.out.println("Digite o nome de usuário para excluir a conta: ");
-	                    MinhaConta.setUsername(sc.nextLine());
+	                    String usuario = sc.nextLine();
 	                    System.out.println();
-	                    System.out.println("Digite a Senha: ");
-	                    MinhaConta.setSenha(sc.nextLine());
-	                    System.out.println();
-	                    System.out.println();
-	                    System.out.println("Deseja realmente excluir a conta (Digite Sim ou Não.)?");
-	                    String confirmaExclusao = sc.nextLine();
-	                    System.out.println();
-	                    if (confirmaExclusao.equalsIgnoreCase("Sim")) {
-	                         System.out.println("Conta excluída com sucesso!");
-	                    } else {
-	                         System.out.println("Operação cancelada!");
-	                    }
+	                    MinhaConta.excluir(usuario);
+						contadorConta--;
 	                    break;
 
 	               case 3:
 	                    System.out.println("Digite o nome de usuário para alterar as informações: ");
-	                    MinhaConta.setUsername(sc.nextLine());
-	                    System.out.println();
-	                    System.out.println("Digite a Senha: ");
-	                    MinhaConta.setSenha(sc.nextLine());
+	                    String usuario_alterar = sc.nextLine();
 	                    System.out.println();
 	                    System.out.println("Digite o novo email: ");
-	                    MinhaConta.setEmail(sc.nextLine());
+	                    String novo_email = sc.nextLine();
 	                    System.out.println();
 	                    System.out.println("Digite a nova senha: ");
-	                    MinhaConta.setSenha(sc.nextLine());
-	                    System.out.println("Informações alteradas com sucesso!");
+	                    String nova_senha = sc.nextLine();
 	                    System.out.println();
+						MinhaConta.alterar(usuario_alterar, novo_email, nova_senha);
 	                    break;
 
 	               case 4:
-	                    System.out.println("Clientes ativos: ");
-	                    System.out.println(MinhaConta.getUsername());
+	                    MinhaConta.mostrar();
 	                    break;
 
 	               case 5:
