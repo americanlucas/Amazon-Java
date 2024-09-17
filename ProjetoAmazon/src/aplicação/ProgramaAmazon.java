@@ -46,7 +46,7 @@ public class ProgramaAmazon {
 	                    //System.out.println();
 	                    System.out.println("Senha: "); 
 	                    MinhaConta.setSenha(sc.nextLine());
-						MinhaConta.adicionar(contadorConta);
+						MinhaConta.adicionar();
 						contadorConta++;
 	                    break;
 	               
@@ -104,7 +104,7 @@ public class ProgramaAmazon {
 						//System.out.println();
 						System.out.println("Quantidade: "); 
 	                    MeusProdutos.setQuantidade(sc.nextLine());
-						MeusProdutos.adicionar(contadorProduto);
+						MeusProdutos.adicionar();
 						contadorProduto++;
 	                    break;
 
@@ -118,7 +118,6 @@ public class ProgramaAmazon {
 	                    System.out.println();
 	                    MeusProdutos.excluir(produto);
 						contadorProduto--;
-						
 	                    break;
 	               
 	               case 8: 
